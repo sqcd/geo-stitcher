@@ -1,7 +1,10 @@
 import os
+import sys
 import io
 import zipfile
+
 from pydub import AudioSegment
+from pydub.utils import which
 
 FORMATS = ['mp3', 'wav', 'm4a']
 GAP = 1000
@@ -11,6 +14,32 @@ def main():
     output_path = input("Enter the path for the output MP3 file: ")
 
     extract_and_stitch_audio(pptx_path, output_path)
+
+def get_ffmpeg_path():
+    if getattr(sys, "frozen", False):
+        base_dir = os.path.dirname(sys.executable)
+    else:
+        base_dir = os.path.dirname(
+            os.path.abspath(__file__)
+        )
+
+    bundled_ffmpeg = os.path.join(
+        base_dir,
+        "ffmpeg",
+        "ffmpeg.exe"
+    )
+
+    if os.path.exists(bundled_ffmpeg):
+        return bundled_ffmpeg
+
+    system_ffmpeg = which("ffmpeg")
+
+    if system_ffmpeg:
+        return system_ffmpeg
+
+    raise FileNotFoundError(
+        "FFmpeg could not be found."
+    )
 
 def extract_and_stitch_audio(pptx_path, output_path, progress_callback=None):
 
@@ -30,6 +59,8 @@ def extract_and_stitch_audio(pptx_path, output_path, progress_callback=None):
         total_audio_files = len(audio_files)
 
         print(f"Found {total_audio_files} audio files. Starting extraction and stitching...")
+
+        AudioSegment.converter = get_ffmpeg_path()
 
         combined_audio = AudioSegment.empty()
 

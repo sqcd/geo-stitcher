@@ -28,7 +28,9 @@ instance/
 # Build and test artifacts
 build/
 dist/
+ffmpeg/
 *.egg-info/
+*.spec
 .pytest_cache/
 .coverage
 htmlcov/
