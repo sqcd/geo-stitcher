@@ -1,7 +1,7 @@
 [project]
 name = "pptx-audio-extractor"
 version = "0.1.0"
-description = "Local web app for combining PowerPoint slide audio into a single MP3.
+description = "Local web app for combining PowerPoint slide audio into a single MP3."
 readme = "README.md"
 requires-python = ">=3.13"
 dependencies = [
