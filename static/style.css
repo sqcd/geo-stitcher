@@ -1,0 +1,674 @@
+* {
+  box-sizing: border-box;
+  }
+
+body {
+margin: 0;
+padding: 0;
+
+
+font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+background:
+    linear-gradient(
+        135deg,
+        #f8fcfd 0%,
+        #f3f9ff 50%,
+        #f2f8fd 100%
+    );
+
+color: #23405a;
+
+min-height: 100vh;
+
+display: flex;
+justify-content: center;
+align-items: center;
+
+
+}
+
+/* =========================
+Main Container
+========================= */
+
+.container {
+width: 90%;
+max-width: 600px;
+
+
+background: rgba(255, 255, 255, 0.96);
+
+padding: 42px;
+
+border-radius: 24px;
+
+box-shadow:
+    0 12px 40px rgba(72, 157, 211, 0.15),
+    0 3px 10px rgba(72, 157, 211, 0.08);
+
+text-align: center;
+
+border: 1px solid rgba(142, 211, 244, 0.45);
+
+
+}
+
+/* =========================
+Heading
+========================= */
+
+h1 {
+margin: 0 0 10px;
+
+
+font-size: 32px;
+
+color: #287db3;
+
+letter-spacing: -0.5px;
+
+
+}
+
+.subtitle {
+margin: 0 0 30px;
+
+
+color: #7292a8;
+
+font-size: 16px;
+
+
+}
+
+/* =========================
+Upload Area
+========================= */
+
+.drop-zone {
+border: 2px dashed #9ed4f1;
+
+
+border-radius: 18px;
+
+padding: 35px 20px;
+
+background: #f5fbff;
+
+transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+
+cursor: pointer;
+
+
+}
+
+.drop-zone:hover {
+border-color: #55b4e6;
+
+
+background: #eef9ff;
+
+transform: translateY(-2px);
+
+box-shadow:
+    0 6px 18px rgba(72, 157, 211, 0.10);
+
+
+}
+
+.drop-zone.dragover {
+border-color: #349bd0;
+
+
+background: #e6f6ff;
+
+transform: scale(1.01);
+
+box-shadow:
+    0 8px 24px rgba(52, 155, 208, 0.14);
+
+
+}
+
+/* =========================
+Music Icon
+========================= */
+
+.drop-icon {
+font-size: 44px;
+
+
+margin-bottom: 10px;
+
+display: inline-block;
+
+animation: gentle-bounce 2.5s ease-in-out infinite;
+
+
+}
+
+@keyframes gentle-bounce {
+0%,
+100% {
+transform: translateY(0);
+}
+
+
+50% {
+    transform: translateY(-4px);
+}
+
+
+}
+
+/* =========================
+Upload Text
+========================= */
+
+.drop-zone h2 {
+margin: 5px 0 10px;
+
+
+font-size: 20px;
+
+color: #315b75;
+
+
+}
+
+.drop-zone p {
+margin: 8px 0;
+
+
+color: #8aa5b6;
+
+
+}
+
+/* =========================
+File Button
+========================= */
+
+.file-button {
+display: inline-block;
+
+
+padding: 11px 20px;
+
+background:
+    linear-gradient(
+        135deg,
+        #45afe0,
+        #348fc5
+    );
+
+color: white;
+
+border-radius: 10px;
+
+font-weight: bold;
+
+cursor: pointer;
+
+box-shadow:
+    0 4px 10px rgba(52, 143, 197, 0.20);
+
+transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+
+
+}
+
+.file-button:hover {
+background:
+linear-gradient(
+135deg,
+#3ca7d8,
+#2e83b8
+);
+
+
+transform: translateY(-1px);
+
+box-shadow:
+    0 6px 14px rgba(52, 143, 197, 0.25);
+
+
+}
+
+.file-button:active {
+transform: translateY(1px);
+}
+
+/* =========================
+Selected Filename
+========================= */
+
+.filename {
+margin-top: 15px !important;
+
+
+font-weight: bold;
+
+color: #3988b5 !important;
+
+word-break: break-word;
+
+
+}
+
+/* =========================
+Convert Button
+========================= */
+
+.convert-button {
+width: 100%;
+
+
+margin-top: 20px;
+
+padding: 14px;
+
+border: none;
+
+border-radius: 11px;
+
+background:
+    linear-gradient(
+        135deg,
+        #3da9dc,
+        #318bc2
+    );
+
+color: white;
+
+font-size: 16px;
+
+font-weight: bold;
+
+cursor: pointer;
+
+box-shadow:
+    0 5px 14px rgba(49, 139, 194, 0.20);
+
+transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+
+
+}
+
+.convert-button:hover:not(:disabled) {
+background:
+linear-gradient(
+135deg,
+#35a1d5,
+#2b82b7
+);
+
+
+transform: translateY(-2px);
+
+box-shadow:
+    0 7px 18px rgba(49, 139, 194, 0.27);
+
+
+}
+
+.convert-button:active:not(:disabled) {
+transform: translateY(1px);
+
+
+box-shadow:
+    0 3px 8px rgba(49, 139, 194, 0.20);
+
+
+}
+
+.convert-button:disabled {
+background: #c9dce7;
+
+
+color: #89a2b1;
+
+cursor: not-allowed;
+
+box-shadow: none;
+
+
+}
+
+/* =========================
+Progress Area
+========================= */
+
+.conversion-area {
+margin-top: 25px;
+
+
+padding: 18px;
+
+border-radius: 15px;
+
+background: #f5fbff;
+
+border: 1px solid #dceff8;
+
+text-align: left;
+
+
+}
+
+.progress-text {
+margin-bottom: 10px;
+
+
+font-size: 14px;
+
+font-weight: bold;
+
+color: #4f7187;
+
+text-align: center;
+
+
+}
+
+/* =========================
+Progress Bar
+========================= */
+
+.progress-track {
+width: 100%;
+
+
+height: 18px;
+
+background: #dceef7;
+
+border-radius: 999px;
+
+overflow: hidden;
+
+
+}
+
+.progress-bar {
+height: 100%;
+
+
+width: 0%;
+
+background:
+    linear-gradient(
+        90deg,
+        #54bce8,
+        #398fca
+    );
+
+border-radius: 999px;
+
+transition:
+    width 0.3s ease;
+
+position: relative;
+
+
+}
+
+/* Subtle shine on progress bar */
+
+.progress-bar::after {
+content: "";
+
+
+position: absolute;
+
+top: 0;
+left: 0;
+
+width: 100%;
+height: 50%;
+
+background: rgba(255, 255, 255, 0.20);
+
+border-radius: 999px;
+
+
+}
+
+.progress-percentage {
+margin-top: 8px;
+
+
+text-align: center;
+
+font-size: 14px;
+
+font-weight: bold;
+
+color: #72a0b9;
+
+
+}
+
+/* =========================
+Status / Error
+========================= */
+
+.status {
+margin-top: 15px;
+
+
+padding: 12px 14px;
+
+border-radius: 10px;
+
+background: #eef8fd;
+
+border: 1px solid #d5edf8;
+
+color: #5b7d91;
+
+font-size: 14px;
+
+
+}
+
+.status.error {
+background: #fff2f2;
+
+
+border-color: #f5d1d1;
+
+color: #c45d5d;
+
+
+}
+
+/* =========================
+Finished Area
+========================= */
+
+.finished-area {
+margin-top: 25px;
+
+
+padding: 20px;
+
+border-radius: 15px;
+
+background: #f2fbf7;
+
+border: 1px solid #d5f0e3;
+
+
+}
+
+.success-message {
+margin-bottom: 20px;
+
+
+font-size: 18px;
+
+font-weight: bold;
+
+color: #43a579;
+
+
+}
+
+/* =========================
+Download Button
+========================= */
+
+.download-button {
+display: block;
+
+
+width: 100%;
+
+padding: 14px;
+
+border-radius: 10px;
+
+background:
+    linear-gradient(
+        135deg,
+        #45afe0,
+        #348fc5
+    );
+
+color: white;
+
+text-decoration: none;
+
+font-size: 16px;
+
+font-weight: bold;
+
+box-shadow:
+    0 5px 14px rgba(52, 143, 197, 0.20);
+
+transition:
+    background 0.2s ease,
+    transform 0.15s ease,
+    box-shadow 0.2s ease;
+
+
+}
+
+.download-button:hover {
+background:
+linear-gradient(
+135deg,
+#3ca7d8,
+#2e83b8
+);
+
+
+transform: translateY(-2px);
+
+box-shadow:
+    0 7px 18px rgba(52, 143, 197, 0.25);
+
+
+}
+
+.download-button:active {
+transform: translateY(1px);
+}
+
+/* =========================
+Start Over
+========================= */
+
+.start-over-button {
+width: 100%;
+
+
+margin-top: 10px;
+
+padding: 12px;
+
+border: 1px solid #b9d8e8;
+
+border-radius: 10px;
+
+background: white;
+
+color: #4f829e;
+
+font-size: 15px;
+
+font-weight: bold;
+
+cursor: pointer;
+
+transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    transform 0.15s ease;
+
+
+}
+
+.start-over-button:hover {
+background: #f1faff;
+
+
+border-color: #79bbda;
+
+transform: translateY(-1px);
+
+
+}
+
+.start-over-button:active {
+transform: translateY(1px);
+}
+
+/* =========================
+Utility
+========================= */
+
+.hidden {
+display: none;
+}
+
+/* =========================
+Mobile
+========================= */
+
+@media (max-width: 600px) {
+
+
+.container {
+    width: 94%;
+
+    padding: 28px 20px;
+
+    border-radius: 20px;
+}
+
+h1 {
+    font-size: 27px;
+}
+
+.drop-zone {
+    padding: 30px 15px;
+}
+
+
+}

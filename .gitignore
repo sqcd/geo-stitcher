@@ -1,0 +1,46 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+
+# IDE
+.vscode/
+
+# Generated audio
+*.mp3
+*.wav
+*.m4a
+
+# PPTX files
+*.pptx
+
+# Environment variables and local Flask settings
+.env
+.env.*
+!.env.example
+.flaskenv
+instance/
+
+# Build and test artifacts
+build/
+dist/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Logs and temporary files
+*.log
+*.tmp
+
+# Editor and operating system files
+.idea/
+.DS_Store
+Thumbs.db
+Desktop.ini

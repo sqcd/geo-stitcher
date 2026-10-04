@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>PPTX Audio Stitcher</title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='style.css') }}"
+    >
+</head>
+
+<body>
+
+    <main class="container">
+
+        <h1>PPTX Audio Extractor</h1>
+
+        <p class="subtitle">
+            For you 💕💕💕
+        </p>
+
+
+        <!-- ========================= -->
+        <!-- Upload Area                -->
+        <!-- ========================= -->
+
+        <div
+            id="drop-zone"
+            class="drop-zone"
+        >
+
+            <div class="drop-icon">
+                🎵
+            </div>
+
+            <h2>
+                Drop your PowerPoint here
+            </h2>
+
+            <p>
+                or
+            </p>
+
+            <label class="file-button">
+                Choose PPTX
+
+                <input
+                    type="file"
+                    id="file-input"
+                    accept=".pptx"
+                    hidden
+                >
+            </label>
+
+            <p
+                id="filename"
+                class="filename"
+            ></p>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Convert / Progress Area   -->
+        <!-- ========================= -->
+
+        <div
+            id="conversion-area"
+            class="conversion-area hidden"
+        >
+
+            <!-- Progress text -->
+
+            <div
+                id="progress-text"
+                class="progress-text"
+            >
+                Starting conversion...
+            </div>
+
+
+            <!-- Progress bar -->
+
+            <div
+                class="progress-track"
+                role="progressbar"
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-valuenow="0"
+            >
+
+                <div
+                    id="progress-bar"
+                    class="progress-bar"
+                    style="width: 0%"
+                ></div>
+
+            </div>
+
+
+            <!-- Percentage -->
+
+            <div
+                id="progress-percentage"
+                class="progress-percentage"
+            >
+                0%
+            </div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Convert Button             -->
+        <!-- ========================= -->
+
+        <button
+            id="convert-button"
+            class="convert-button"
+            disabled
+        >
+            Convert to MP3
+        </button>
+
+
+        <!-- ========================= -->
+        <!-- Status                     -->
+        <!-- ========================= -->
+
+        <div
+            id="status"
+            class="status hidden"
+        >
+
+            <div id="status-text"></div>
+
+        </div>
+
+
+        <!-- ========================= -->
+        <!-- Finished Actions            -->
+        <!-- ========================= -->
+
+        <div
+            id="finished-area"
+            class="finished-area hidden"
+        >
+
+            <div class="success-message">
+                ✓ Conversion complete!
+            </div>
+
+
+            <a
+                id="download-button"
+                class="download-button"
+            >
+                Download MP3
+            </a>
+
+
+            <button
+                id="start-over-button"
+                class="start-over-button"
+            >
+                Start Over
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <script
+        src="{{ url_for('static', filename='script.js') }}"
+    ></script>
+
+</body>
+
+</html>
