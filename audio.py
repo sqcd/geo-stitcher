@@ -2,6 +2,15 @@ import os
 import sys
 import io
 import zipfile
+import subprocess
+
+original_popen = subprocess.Popen
+def silent_popen(*args, **kwargs):
+    if 'creationflags' not in kwargs:
+        kwargs['creationflags'] = 0x08000000  # CREATE_NO_WINDOW
+    return original_popen(*args, **kwargs)
+
+subprocess.Popen = silent_popen
 
 from pydub import AudioSegment
 from pydub.utils import which
@@ -14,32 +23,6 @@ def main():
     output_path = input("Enter the path for the output MP3 file: ")
 
     extract_and_stitch_audio(pptx_path, output_path)
-
-def get_ffmpeg_path():
-    if getattr(sys, "frozen", False):
-        base_dir = os.path.dirname(sys.executable)
-    else:
-        base_dir = os.path.dirname(
-            os.path.abspath(__file__)
-        )
-
-    bundled_ffmpeg = os.path.join(
-        base_dir,
-        "ffmpeg",
-        "ffmpeg.exe"
-    )
-
-    if os.path.exists(bundled_ffmpeg):
-        return bundled_ffmpeg
-
-    system_ffmpeg = which("ffmpeg")
-
-    if system_ffmpeg:
-        return system_ffmpeg
-
-    raise FileNotFoundError(
-        "FFmpeg could not be found."
-    )
 
 def extract_and_stitch_audio(pptx_path, output_path, progress_callback=None):
 
@@ -60,15 +43,13 @@ def extract_and_stitch_audio(pptx_path, output_path, progress_callback=None):
 
         print(f"Found {total_audio_files} audio files. Starting extraction and stitching...")
 
-        AudioSegment.converter = get_ffmpeg_path()
-
         combined_audio = AudioSegment.empty()
-
+            
         for index, (slide_number, filename) in enumerate(audio_files, start=1):
             print(f"Extracting audio from slide {slide_number}: {filename}")
 
             audio_data = pptx.read(filename)
-            audio_segment = AudioSegment.from_file(io.BytesIO(audio_data), format=filename.split('.')[-1])
+            audio_segment = AudioSegment.from_file(io.BytesIO(audio_data), format=filename.rsplit('.', 1)[1].lower())
             combined_audio += audio_segment
 
             if index < total_audio_files:

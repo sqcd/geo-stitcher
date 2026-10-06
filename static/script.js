@@ -244,6 +244,19 @@ function startPolling() {
     checkStatus();
 }
 
+// =========================
+// Send Heartbeat
+// =========================
+
+function sendHeartbeat() {
+    fetch("/heartbeat", {
+        method: "POST"
+    }).catch(() => {});
+}
+
+sendHeartbeat();
+
+setInterval(sendHeartbeat, 1000); // Every 30 seconds
 
 // =========================
 // Check Status
